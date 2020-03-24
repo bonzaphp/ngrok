@@ -1,5 +1,5 @@
 FROM golang:1.7-alpine as build
-
+MAINTAINER bonza <bonzaphp@gmail.com>
 WORKDIR /go
 
 
