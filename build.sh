@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+set -eux
 
 export NGROK_DOMAIN="ngrok.bonza.cn"
 cd /go/ngrok \
@@ -16,7 +16,7 @@ sed -i 's#code.google.com/p/log4go#github.com/keepeye/log4go#' /go/ngrok/src/ngr
 #cd /go/src
 #GOOS=$GOOS GOARCH=$GOARCH ./make.bash
 cd /go/ngrok \
-&& GOOS=$GOOS GOARCH=$GOARCH make release-server \
+&& CGO_ENABLED=0  GOOS=$GOOS GOARCH=$GOARCH make release-server \
 && GOOS=linux GOARCH=386 make release-client \
 && GOOS=linux GOARCH=amd64 make release-client \
 && GOOS=windows GOARCH=386 make release-client \
