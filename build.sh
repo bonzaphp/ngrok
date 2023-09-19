@@ -12,11 +12,11 @@ cd /go/ngrok \
 && cp server.crt assets/server/tls/snakeoil.crt \
 && cp server.key assets/server/tls/snakeoil.key
 # 替换下载源地址
-sed -i 's#code.google.com/p/log4go#github.com/keepeye/log4go#' /go/ngrok/src/ngrok/log/logger.go
+#sed -i 's#code.google.com/p/log4go#github.com/keepeye/log4go#' /go/ngrok/src/ngrok/log/logger.go
 #cd /go/src
 #GOOS=$GOOS GOARCH=$GOARCH ./make.bash
 cd /go/ngrok \
-&& CGO_ENABLED=0  GOOS=$GOOS GOARCH=$GOARCH make release-server \
+&& make release-server \
 && GOOS=linux GOARCH=386 make release-client \
 && GOOS=linux GOARCH=amd64 make release-client \
 && GOOS=windows GOARCH=386 make release-client \

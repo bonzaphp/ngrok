@@ -10,6 +10,8 @@ ADD build.sh /go
 #COPY ${PWD}/ngrok/sources.list /etc/apt/
 	
 RUN unzip ngrok.zip \
+    && sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/repositories \
+    && apk update \
     && apk --no-cache add make \
         ca-certificates \
         openssl \
